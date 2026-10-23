@@ -24,7 +24,7 @@
   const menus = $$('.menu');
   let openMenu = null;
 
-  function items(menu) { return $$('.menu-panel > li > a, .menu-panel > li > button, .menu-panel--popover button', menu); }
+  function items(menu) { return $$('.menu-panel a, .menu-panel button', menu); }
   function showMenu(menu, focusFirst) {
     if (openMenu && openMenu !== menu) hideMenu(openMenu);
     openMenu = menu;
@@ -45,7 +45,7 @@
     title.addEventListener('pointerenter', () => { if (openMenu && openMenu !== menu) showMenu(menu); });
     menu.addEventListener('keydown', (e) => {
       const list = items(menu), at = list.indexOf(document.activeElement);
-      const step = (d) => menus[(i + d + menus.length) % menus.length];
+      const step = (d) => { let n = i; do n = (n + d + menus.length) % menus.length; while (!menus[n].offsetParent && n !== i); return menus[n]; };
       if (e.key === 'ArrowDown') { e.preventDefault(); if (openMenu !== menu) showMenu(menu, true); else list[(at + 1) % list.length]?.focus(); }
       else if (e.key === 'ArrowUp') { e.preventDefault(); if (openMenu !== menu) showMenu(menu); list[(at - 1 + list.length) % list.length]?.focus(); }
       else if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
@@ -56,6 +56,18 @@
     $('.menu-panel', menu).addEventListener('click', (e) => { if (e.target.closest('a, button')) hideMenu(menu); });
   });
   document.addEventListener('pointerdown', (e) => { if (openMenu && !openMenu.contains(e.target)) hideMenu(openMenu); });
+
+  // Menu Bar Hider: the arrow collapses the module icons to its left, as it does in MenuUtils.
+  const hider = $('.hider'), modules = $('#mu-modules');
+  hider.addEventListener('click', () => {
+    const show = hider.getAttribute('aria-expanded') !== 'true';
+    if (openMenu && modules.contains(openMenu)) hideMenu(openMenu);
+    hider.setAttribute('aria-expanded', String(show));
+    hider.setAttribute('aria-label', show ? 'Hide menu bar icons' : 'Show menu bar icons');
+    modules.classList.toggle('is-collapsed', !show);
+    modules.classList.toggle('is-revealing', show);
+    if (show) setTimeout(() => modules.classList.remove('is-revealing'), 500);
+  });
 
   // ---------- Windows ----------
   const windows = Object.fromEntries($$('[data-window]').map((w) => [w.dataset.window, w]));

@@ -122,6 +122,37 @@ button { font: inherit; color: inherit; }
 .menu-panel li > a:focus-visible, .menu-panel li > button:focus-visible { background: var(--select); color: #fff; outline: none; }
 .menu-panel img { width: 16px; height: 16px; border-radius: 4px; }
 .menu-panel .sep { height: 1px; margin: 5px 10px; background: var(--win-line); }
+/* MenuUtils modules in the menu bar: each panel is the real dropdown, arrow and shadow included */
+.mu-modules { display: flex; align-items: center; height: 100%; }
+.mu-modules.is-collapsed { display: none; }
+.mu-modules.is-revealing .menu-title { animation: mu-in .32s var(--ease-pop) both; }
+.mu-modules.is-revealing .menu:nth-child(2) .menu-title { animation-delay: .03s; }
+.mu-modules.is-revealing .menu:nth-child(3) .menu-title { animation-delay: .06s; }
+.mu-modules.is-revealing .menu:nth-child(4) .menu-title { animation-delay: .09s; }
+@keyframes mu-in { from { opacity: 0; transform: translateX(14px); } }
+.hider {
+  height: 24px; padding: 0 7px; border: 0; border-radius: 5px; background: none; color: #fff;
+  display: inline-flex; align-items: center; cursor: default;
+}
+.hider:hover { background: rgba(255, 255, 255, .18); }
+.hider svg { transition: transform .25s; }
+.hider[aria-expanded="false"] svg { transform: rotate(180deg); }
+.menu-panel--module {
+  top: calc(100% - 8px); left: 50%; transform: translateX(-50%);
+  width: 340px; min-width: 0; padding: 0; border-radius: 0;
+  background: none; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none;
+  text-align: center;
+}
+/* The panel screenshots were captured over a grey backdrop; lift them back to a light panel */
+.menu-panel--module img { display: block; width: 340px; height: auto; filter: brightness(1.17) contrast(1.04); }
+.mu-chip {
+  margin-top: -20px; padding: 5px 12px; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--menu-bg); color: var(--menu-ink); font-family: var(--system); font-size: 12.5px;
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+  box-shadow: 0 0 0 .5px rgba(0, 0, 0, .3), 0 6px 16px rgba(0, 0, 0, .2);
+}
+.mu-chip::after { content: " \2192"; }
+.mu-chip:hover, .mu-chip:focus-visible { background: var(--select); color: #fff; outline: none; }
 .menu-panel--popover { width: 280px; padding: 14px 16px 16px; border-radius: 12px; }
 .menu-panel--popover p { margin: 0 0 12px; line-height: 1.45; }
 
@@ -343,6 +374,8 @@ img.tile { background: #e6f3e4; padding: 6px; }
 @media (prefers-reduced-motion: reduce) {
   .window.is-opening, .window.is-closing, .window.is-intro { animation: none !important; }
   .dock-item { transition: none; }
+  .mu-modules.is-revealing .menu-title { animation: none; }
+  .hider svg { transition: none; }
 }
 
 /* Narrower desktops: smaller windows side by side, then stacked */
