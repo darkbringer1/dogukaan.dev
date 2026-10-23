@@ -2,243 +2,206 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#1f1e1c" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#f3f1ec" media="(prefers-color-scheme: light)">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#24382f">
   <title>Doğukaan — apps for Mac and iPhone</title>
   <meta name="description" content="Doğukaan builds independent apps for Mac and iPhone: Zerre, a tiny pixel companion for your desktop, MenuUtils, a modular menu-bar toolkit, and Glean, AI bookmarks for iPhone and iPad.">
   <meta property="og:title" content="Doğukaan — apps for Mac and iPhone">
   <meta property="og:description" content="Independent apps for Apple platforms: Zerre, MenuUtils and Glean.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dogukaan.dev/">
+  <meta property="og:image" content="https://dogukaan.dev/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://dogukaan.dev/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-  <style>
-    /* Tokens follow the shared Zerre / MenuUtils site style. */
-    :root {
-      --bg: #1f1e1c;
-      --panel: #2a2926;
-      --panel2: #34332f;
-      --line: rgba(255,255,255,.08);
-      --line2: rgba(255,255,255,.14);
-      --fg: rgba(255,255,255,.92);
-      --fg2: rgba(255,255,255,.58);
-      --fg3: rgba(255,255,255,.38);
-      --accent: #7fd6a0;
-      --accent-fg: #0f2418;
-      --shadow: 0 24px 60px rgba(0,0,0,.55);
-      --maxw: 1040px;
-      --gutter: 32px;
-      --sect: 96px;
-      --radius: 12px;
-      --mono: ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono", Menlo, Consolas, monospace;
-      --sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f3f1ec;
-        --panel: #ffffff;
-        --panel2: #f6f4ef;
-        --line: rgba(0,0,0,.08);
-        --line2: rgba(0,0,0,.16);
-        --fg: rgba(0,0,0,.88);
-        --fg2: rgba(0,0,0,.58);
-        --fg3: rgba(0,0,0,.38);
-        --accent: #2f8f5b;
-        --accent-fg: #ffffff;
-        --shadow: 0 18px 44px rgba(0,0,0,.12);
-      }
-    }
-    @media (max-width: 820px) { :root { --sect: 64px; --gutter: 20px; } }
-
-    * { box-sizing: border-box; }
-    html { -webkit-font-smoothing: antialiased; }
-    body {
-      margin: 0;
-      font-family: var(--sans);
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.55;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
-    section { padding: var(--sect) 0 0; }
-
-    .eyebrow {
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--fg3);
-      margin: 0 0 18px;
-    }
-
-    .hero { padding-top: calc(var(--sect) * 1.4); }
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(44px, 8vw, 84px);
-      line-height: 1;
-      letter-spacing: -.035em;
-      font-weight: 700;
-    }
-    .hero h1 .dot { color: var(--accent); }
-    .hero .lede {
-      margin: 22px 0 0;
-      max-width: 34ch;
-      font-size: clamp(20px, 2.6vw, 26px);
-      line-height: 1.35;
-      color: var(--fg2);
-      letter-spacing: -.01em;
-    }
-
-    .apps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-    @media (max-width: 760px) { .apps { grid-template-columns: 1fr; } }
-    .app {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      padding: 28px;
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .app-head { display: flex; align-items: center; gap: 14px; }
-    .app-head img { width: 52px; height: 52px; border-radius: 12px; background: var(--panel2); border: 1px solid var(--line); }
-    .app-head img.pixel { image-rendering: pixelated; padding: 8px; }
-    .app h2 { margin: 0; font-size: 22px; letter-spacing: -.015em; }
-    .app .tag { margin: 2px 0 0; font-family: var(--mono); font-size: 12px; color: var(--fg3); }
-    .app p { margin: 0; color: var(--fg2); font-size: 15px; }
-    .app .links { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 10px; }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 9px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
-      border: 1px solid var(--line2);
-      color: var(--fg);
-    }
-    .btn:hover { text-decoration: none; background: var(--panel2); }
-    .btn-primary { background: var(--accent); color: var(--accent-fg); border-color: transparent; }
-    .btn-primary:hover { background: var(--accent); filter: brightness(1.06); }
-
-    .list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
-    .list li { border-bottom: 1px solid var(--line); }
-    .list a { display: flex; justify-content: space-between; gap: 16px; padding: 18px 2px; color: var(--fg); font-size: 17px; }
-    .list a span { color: var(--fg3); font-family: var(--mono); font-size: 13px; }
-    .list a:hover { text-decoration: none; color: var(--accent); }
-
-    .about p { margin: 0 0 10px; max-width: 60ch; font-size: 17px; color: var(--fg2); }
-
-    footer {
-      margin-top: var(--sect);
-      padding: 28px 0 40px;
-      border-top: 1px solid var(--line);
-      font-size: 14px;
-      color: var(--fg3);
-    }
-    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
-    footer nav { display: flex; gap: 8px; }
-    footer nav a { color: var(--fg2); }
-  </style>
+  <link rel="preload" href="/assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
+  <script src="/assets/site.js" defer></script>
 </head>
 <body>
-  <main>
-    <section class="hero">
-      <div class="wrap">
-        <p class="eyebrow">Independent apps for Apple platforms</p>
-        <h1>Doğukaan<span class="dot">.</span></h1>
-        <p class="lede">I build apps for Mac and iPhone.</p>
+  <a class="skip" href="#about">Skip to content</a>
+
+  <!-- Menu bar (desktop) -->
+  <header class="menubar">
+    <nav class="menus" aria-label="Site">
+      <div class="menu">
+        <button class="menu-title menu-title--name" type="button" aria-expanded="false" aria-controls="menu-me">Doğukaan</button>
+        <ul class="menu-panel" id="menu-me" hidden>
+          <li><button type="button" data-open="about">About Doğukaan</button></li>
+          <li class="sep" role="separator"></li>
+          <li><a href="https://github.com/darkbringer1">GitHub</a></li>
+        </ul>
+      </div>
+      <div class="menu">
+        <button class="menu-title" type="button" aria-expanded="false" aria-controls="menu-apps">Apps</button>
+        <ul class="menu-panel" id="menu-apps" hidden>
+          <li><button type="button" data-open="zerre"><img src="/assets/zerre.svg" alt="" class="pixel">Zerre</button></li>
+          <li><button type="button" data-open="menuutils"><img src="/assets/menuutils.svg" alt="">MenuUtils</button></li>
+          <li><button type="button" data-open="glean"><img src="/assets/glean.svg" alt="">Glean</button></li>
+          <li class="sep" role="separator"></li>
+          <li><a href="https://zerre.dogukaan.dev/releases">Zerre release notes</a></li>
+          <li><a href="https://menuutils.dogukaan.dev/releases">MenuUtils release notes</a></li>
+        </ul>
+      </div>
+      <div class="menu">
+        <button class="menu-title" type="button" aria-expanded="false" aria-controls="menu-window">Window</button>
+        <ul class="menu-panel" id="menu-window" hidden>
+          <li><button type="button" data-action="tidy">Tidy up windows</button></li>
+          <li><button type="button" data-action="close-all">Close all windows</button></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="status">
+      <div class="menu menu--right">
+        <button class="menu-title status-item" type="button" aria-expanded="false" aria-controls="menu-mu" aria-label="MenuUtils">
+          <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.5" fill="currentColor"/><rect x="9" y="1.5" width="5.5" height="5.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="1.5" y="9" width="5.5" height="5.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="9" y="9" width="5.5" height="5.5" rx="2.75" fill="currentColor"/></svg>
+        </button>
+        <div class="menu-panel menu-panel--popover" id="menu-mu" hidden>
+          <p><strong>MenuUtils lives up here.</strong> A dozen small Mac tools in one menu-bar icon: monitors, clipboard history, transcription, cleanup.</p>
+          <button type="button" class="btn btn--small" data-open="menuutils">About MenuUtils</button>
+        </div>
+      </div>
+      <span class="clock" title="The time in Berlin, where I live"><span class="clock-city">Berlin</span> <time id="clock"></time></span>
+    </div>
+  </header>
+
+  <!-- Status bar (phone) -->
+  <div class="statusbar" aria-hidden="true"><time class="clock-short"></time><span>Berlin</span></div>
+
+  <main class="desktop">
+    <!-- About -->
+    <section class="window window--about" id="about" data-window="about" aria-labelledby="about-title" tabindex="-1">
+      <div class="titlebar">
+        <div class="lights"><button type="button" class="light light--close" data-close aria-label="Close window"></button><span class="light light--min" aria-hidden="true"></span><span class="light light--zoom" aria-hidden="true"></span></div>
+        <span class="window-title">dogukaan.dev</span>
+      </div>
+      <div class="window-body about">
+        <h1 id="about-title">Hi, I'm Doğukaan.</h1>
+        <p class="lede">I make small, careful apps for Mac and iPhone. This is my desktop. Have a look around.</p>
+        <dl class="facts">
+          <dt>Day job</dt><dd>Senior iOS and macOS engineer</dd>
+          <dt>Lives in</dt><dd>Berlin, from Türkiye</dd>
+          <dt>Off the keyboard</dt><dd>Scrambler motorcycles, ESP boards, self-hosting</dd>
+          <dt>Code</dt><dd><a href="https://github.com/darkbringer1">github.com/darkbringer1</a></dd>
+        </dl>
       </div>
     </section>
 
-    <section aria-labelledby="apps-title">
-      <div class="wrap">
-        <p class="eyebrow" id="apps-title">Apps</p>
-        <div class="apps">
-          <article class="app">
-            <div class="app-head">
-              <img class="pixel" src="/assets/zerre.svg" alt="" width="52" height="52">
-              <div>
-                <h2>Zerre</h2>
-                <p class="tag">A little life on your Mac</p>
-              </div>
-            </div>
-            <p>A tiny pixel companion for your desktop. It notices when your coding agent is done, celebrates your commits, keeps your notes, and works beside you in focus blocks. Your habits shape who it becomes.</p>
-            <div class="links">
-              <a class="btn btn-primary" href="https://zerre.dogukaan.dev/">Get Zerre <span aria-hidden="true">↗</span></a>
-              <a class="btn" href="https://zerre.dogukaan.dev/releases">Release notes</a>
-            </div>
-          </article>
+    <!-- Applications -->
+    <section class="window window--apps" id="apps" data-window="apps" aria-labelledby="apps-title" tabindex="-1">
+      <div class="titlebar">
+        <div class="lights"><button type="button" class="light light--close" data-close aria-label="Close window"></button><span class="light light--min" aria-hidden="true"></span><span class="light light--zoom" aria-hidden="true"></span></div>
+        <h2 class="window-title" id="apps-title">Applications</h2>
+      </div>
+      <ul class="app-list">
+        <li><a class="app-row" href="https://zerre.dogukaan.dev/" data-open="zerre">
+          <img class="pixel tile" src="/assets/zerre.svg" alt="" width="44" height="44">
+          <span><strong>Zerre</strong><small>A pixel companion that lives on your Mac</small></span>
+          <em>Mac</em>
+        </a></li>
+        <li><a class="app-row" href="https://menuutils.dogukaan.dev/" data-open="menuutils">
+          <img src="/assets/menuutils.svg" alt="" width="44" height="44">
+          <span><strong>MenuUtils</strong><small>A dozen menu-bar tools in one app</small></span>
+          <em>Mac</em>
+        </a></li>
+        <li><a class="app-row" href="https://glean.dogukaan.dev/" data-open="glean">
+          <img src="/assets/glean.svg" alt="" width="44" height="44">
+          <span><strong>Glean</strong><small>AI bookmarks, laid out as a map</small></span>
+          <em>iPhone and iPad</em>
+        </a></li>
+      </ul>
+    </section>
 
-          <article class="app">
-            <div class="app-head">
-              <img src="/assets/menuutils.svg" alt="" width="52" height="52">
-              <div>
-                <h2>MenuUtils</h2>
-                <p class="tag">A modular menu-bar toolkit</p>
-              </div>
-            </div>
-            <p>System and network monitoring, clipboard history, on-device meeting transcription, an app uninstaller, Xcode cleanup and more, in one menu-bar app instead of a dozen.</p>
-            <div class="links">
-              <a class="btn btn-primary" href="https://menuutils.dogukaan.dev/">Get MenuUtils <span aria-hidden="true">↗</span></a>
-              <a class="btn" href="https://menuutils.dogukaan.dev/releases">Release notes</a>
-            </div>
-          </article>
-          <article class="app">
-            <div class="app-head">
-              <img src="/assets/glean.svg" alt="" width="52" height="52">
-              <div>
-                <h2>Glean</h2>
-                <p class="tag">AI bookmarks for iPhone and iPad</p>
-              </div>
-            </div>
-            <p>Share a link or some text from your iPhone or iPad. Glean writes a title, summary and topics for each save, then lays your library out as a map where related saves sit together. Free to start.</p>
-            <div class="links">
-              <a class="btn btn-primary" href="https://apps.apple.com/us/app/glean-ai-bookmarks/id6795290477">Get Glean <span aria-hidden="true">↗</span></a>
-              <a class="btn" href="https://glean.dogukaan.dev/">Website</a>
-            </div>
-          </article>
+    <!-- App windows, opened from the dock, the icons and the Applications window -->
+    <section class="window window--info" id="zerre" data-window="zerre" aria-labelledby="zerre-title" tabindex="-1" hidden>
+      <div class="titlebar">
+        <div class="lights"><button type="button" class="light light--close" data-close aria-label="Close Zerre"></button><span class="light light--min" aria-hidden="true"></span><span class="light light--zoom" aria-hidden="true"></span></div>
+        <span class="window-title">Zerre</span>
+      </div>
+      <div class="info">
+        <figure class="info-shot info-shot--zerre"><img class="pixel" src="/assets/shots/zerre.png" alt="Zerre, a round mint pixel creature with a sprout, wearing headphones next to a tiny terminal" width="384" height="384" loading="lazy"></figure>
+        <div class="info-text">
+          <img class="pixel info-icon" src="/assets/zerre.svg" alt="" width="56" height="56">
+          <h2 id="zerre-title">Zerre</h2>
+          <p class="info-tag">A little life on your Mac</p>
+          <p>A tiny pixel companion for your desktop. It notices when your coding agent is done, celebrates your commits, keeps your notes and works beside you in focus blocks. Your habits shape who it becomes.</p>
+          <p class="info-aside">The one walking along the bottom of this page is drawn from the app's own sprites. Click it.</p>
+          <dl class="specs"><dt>Runs on</dt><dd>macOS</dd><dt>Price</dt><dd>Free</dd></dl>
+          <div class="actions">
+            <a class="btn btn--primary" href="https://zerre.dogukaan.dev/">Get Zerre</a>
+            <a class="btn" href="https://zerre.dogukaan.dev/releases">Release notes</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section aria-labelledby="releases-title">
-      <div class="wrap">
-        <p class="eyebrow" id="releases-title">Releases</p>
-        <ul class="list">
-          <li><a href="https://zerre.dogukaan.dev/releases">Zerre release notes <span>zerre.dogukaan.dev/releases</span></a></li>
-          <li><a href="https://menuutils.dogukaan.dev/releases">MenuUtils release notes <span>menuutils.dogukaan.dev/releases</span></a></li>
-        </ul>
+    <section class="window window--info" id="menuutils" data-window="menuutils" aria-labelledby="menuutils-title" tabindex="-1" hidden>
+      <div class="titlebar">
+        <div class="lights"><button type="button" class="light light--close" data-close aria-label="Close MenuUtils"></button><span class="light light--min" aria-hidden="true"></span><span class="light light--zoom" aria-hidden="true"></span></div>
+        <span class="window-title">MenuUtils</span>
+      </div>
+      <div class="info">
+        <figure class="info-shot info-shot--menuutils"><img src="/assets/shots/menuutils.png" alt="The MenuUtils panel with the App Uninstaller, Xcode Cleaner and Keyboard Cleaner modules" width="412" height="615" loading="lazy"></figure>
+        <div class="info-text">
+          <img class="info-icon" src="/assets/menuutils.svg" alt="" width="56" height="56">
+          <h2 id="menuutils-title">MenuUtils</h2>
+          <p class="info-tag">A modular menu-bar toolkit</p>
+          <p>System and network monitoring, clipboard history, on-device meeting transcription, an app uninstaller, Xcode cleanup and more, in one menu-bar app instead of a dozen. Switch on the modules you need.</p>
+          <dl class="specs"><dt>Runs on</dt><dd>macOS</dd><dt>Price</dt><dd>Free</dd></dl>
+          <div class="actions">
+            <a class="btn btn--primary" href="https://menuutils.dogukaan.dev/">Get MenuUtils</a>
+            <a class="btn" href="https://menuutils.dogukaan.dev/releases">Release notes</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="about" aria-labelledby="about-title">
-      <div class="wrap">
-        <p class="eyebrow" id="about-title">About</p>
-        <p>I'm a senior iOS and macOS engineer. I build independent apps that feel at home on Apple platforms, and I care about the small details.</p>
-        <p>Code, releases and everything else I'm working on live on <a href="https://github.com/darkbringer1">GitHub</a>.</p>
+    <section class="window window--info" id="glean" data-window="glean" aria-labelledby="glean-title" tabindex="-1" hidden>
+      <div class="titlebar">
+        <div class="lights"><button type="button" class="light light--close" data-close aria-label="Close Glean"></button><span class="light light--min" aria-hidden="true"></span><span class="light light--zoom" aria-hidden="true"></span></div>
+        <span class="window-title">Glean</span>
+      </div>
+      <div class="info">
+        <figure class="info-shot info-shot--glean"><img src="/assets/shots/glean.png" alt="Glean's home screen: saved items grouped into topics on a map" width="440" height="956" loading="lazy"></figure>
+        <div class="info-text">
+          <img class="info-icon" src="/assets/glean.svg" alt="" width="56" height="56">
+          <h2 id="glean-title">Glean</h2>
+          <p class="info-tag">AI bookmarks for iPhone and iPad</p>
+          <p>Share a link or some text from your iPhone or iPad. Glean writes a title, summary and topics for each save, then lays your library out as a map where related saves sit together.</p>
+          <dl class="specs"><dt>Runs on</dt><dd>iPhone, iPad</dd><dt>Price</dt><dd>Free to start</dd></dl>
+          <div class="actions">
+            <a class="btn btn--primary" href="https://apps.apple.com/us/app/glean-ai-bookmarks/id6795290477">Get Glean on the App Store</a>
+            <a class="btn" href="https://glean.dogukaan.dev/">Website</a>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- Desktop icons -->
+    <nav class="icons" aria-label="Apps on the desktop">
+      <a class="icon" href="https://zerre.dogukaan.dev/" data-open="zerre"><img class="pixel tile" src="/assets/zerre.svg" alt="" width="60" height="60"><span>Zerre</span></a>
+      <a class="icon" href="https://menuutils.dogukaan.dev/" data-open="menuutils"><img src="/assets/menuutils.svg" alt="" width="60" height="60"><span>MenuUtils</span></a>
+      <a class="icon" href="https://glean.dogukaan.dev/" data-open="glean"><img src="/assets/glean.svg" alt="" width="60" height="60"><span>Glean</span></a>
+    </nav>
   </main>
 
-  <footer>
-    <div class="wrap">
-      <span>© 2026 Doğukaan</span>
-      <nav aria-label="Footer">
-        <a href="https://github.com/darkbringer1">GitHub</a> ·
-        <a href="https://zerre.dogukaan.dev/">Zerre</a> ·
-        <a href="https://menuutils.dogukaan.dev/">MenuUtils</a> ·
-        <a href="https://glean.dogukaan.dev/">Glean</a>
-      </nav>
-    </div>
-  </footer>
+  <!-- Zerre, walking along the bottom of the screen -->
+  <div class="zerre" hidden>
+    <p class="zerre-bubble" aria-live="polite"></p>
+    <button class="zerre-pet" type="button" aria-label="Zerre. Press to see what it does."><canvas width="64" height="84"></canvas></button>
+  </div>
+
+  <nav class="dock" aria-label="Dock">
+    <a class="dock-item" href="https://zerre.dogukaan.dev/" data-open="zerre" aria-label="Zerre"><img class="pixel tile" src="/assets/zerre.svg" alt=""><span class="dock-label" aria-hidden="true">Zerre</span></a>
+    <a class="dock-item" href="https://menuutils.dogukaan.dev/" data-open="menuutils" aria-label="MenuUtils"><img src="/assets/menuutils.svg" alt=""><span class="dock-label" aria-hidden="true">MenuUtils</span></a>
+    <a class="dock-item" href="https://glean.dogukaan.dev/" data-open="glean" aria-label="Glean"><img src="/assets/glean.svg" alt=""><span class="dock-label" aria-hidden="true">Glean</span></a>
+    <span class="dock-sep" aria-hidden="true"></span>
+    <a class="dock-item dock-item--github" href="https://github.com/darkbringer1" aria-label="GitHub">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      <span class="dock-label" aria-hidden="true">GitHub</span>
+    </a>
+  </nav>
+
+  <div class="sheet-backdrop" hidden></div>
 </body>
 </html>
