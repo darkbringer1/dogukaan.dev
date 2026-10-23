@@ -28,8 +28,15 @@
         <button class="menu-title menu-title--name" type="button" aria-expanded="false" aria-controls="menu-me">Doğukaan</button>
         <ul class="menu-panel" id="menu-me" hidden>
           <li><button type="button" data-open="about">About Doğukaan</button></li>
+          <li><button type="button" data-open="story"><img src="/assets/notes.svg" alt="">How I got here</button></li>
+          <li><button type="button" data-open="resume"><img src="/assets/resume.svg" alt="">Résumé</button></li>
+          <li><button type="button" data-open="community"><img src="/assets/community.svg" alt="">Talks and community</button></li>
           <li class="sep" role="separator"></li>
+          <li><a href="https://www.linkedin.com/in/dogukaan-kilicarslan">LinkedIn</a></li>
           <li><a href="https://github.com/darkbringer1">GitHub</a></li>
+          <li><a href="https://x.com/dogukaank_">X</a></li>
+          <li><a href="https://medium.com/@dogukaan.k">Medium</a></li>
+          <li><a href="mailto:dogukaankilicarslan@gmail.com">Email me</a></li>
         </ul>
       </div>
       <div class="menu">
@@ -111,10 +118,16 @@
         <p class="lede">I make small, careful apps for Mac and iPhone. This is my desktop. Have a look around.</p>
         <dl class="facts">
           <dt>Day job</dt><dd>Senior iOS and macOS engineer</dd>
-          <dt>Lives in</dt><dd>Berlin, from Türkiye</dd>
-          <dt>Off the keyboard</dt><dd>Scrambler motorcycles, ESP boards, self-hosting</dd>
-          <dt>Code</dt><dd><a href="https://github.com/darkbringer1">github.com/darkbringer1</a></dd>
+          <dt>Before that</dt><dd>Avionics engineer, then a sergeant</dd>
+          <dt>Lives in</dt><dd>Berlin, from Istanbul</dd>
+          <dt>Community</dt><dd>Started <a href="#community" data-open="community">SwiftBuddies</a>, iOS meetups in Istanbul and Berlin</dd>
+          <dt>Off the keyboard</dt><dd>Calisthenics, scrambler motorcycles, ESP boards, self-hosting</dd>
         </dl>
+        <div class="about-more">
+          <a class="btn" href="#story" data-open="story"><img src="/assets/notes.svg" alt="">How I got here</a>
+          <a class="btn" href="#resume" data-open="resume"><img src="/assets/resume.svg" alt="">Résumé</a>
+          <a class="btn" href="#community" data-open="community"><img src="/assets/community.svg" alt="">Talks and community</a>
+        </div>
       </div>
     </section>
 
@@ -208,7 +221,165 @@
       </div>
     </section>
 
+    <!-- About me: a note, a résumé and a community folder -->
+    <section class="window window--info window--doc window--notes" id="story" data-window="story" aria-labelledby="story-title" tabindex="-1" hidden>
+      <div class="titlebar">
+        <div class="lights"><button type="button" class="light light--close" data-close aria-label="Close How I got here"></button><span class="light light--min" aria-hidden="true"></span><span class="light light--zoom" aria-hidden="true"></span></div>
+        <span class="window-title">Notes</span>
+      </div>
+      <article class="doc notes">
+        <h2 id="story-title">How I got here</h2>
+        <p class="notes-date">A note to whoever's reading</p>
+        <p>I was born and raised in Istanbul, and I trained to fix aeroplanes. I studied avionics engineering at Atılım University, did my internships in hangars, and once helped take a retired Bombardier apart, piece by piece.</p>
+        <p>After graduating in 2018 I applied to become a pilot at Turkish Airlines. They said no. So I did my military service as a sergeant, and then I went after the thing I'd wanted for a long time: making software.</p>
+        <p>My first apps were a calisthenics tracker and a Pomodoro timer, both just for me. Around the same time I ran a small music-gear shop, where I designed and patented a guitar arm-protection band, and before all that I'd spent years translating on the side.</p>
+        <p>In 2021 an iOS bootcamp run with Hepsiburada turned into a job at Hepsiburada. Then came MigrosOne, where I worked on a fintech app with about a million daily users.</p>
+        <p>Along the way I started <strong>SwiftBuddies</strong>, an iOS meetup in Istanbul. Now I live in Berlin, and SwiftBuddies came with me.</p>
+        <p>These days I build my own apps for Mac and iPhone. Small and careful, the way I'd want to use them.</p>
+        <p class="notes-sign">— Doğukaan</p>
+      </article>
+    </section>
+
+    <section class="window window--info window--doc window--resume" id="resume" data-window="resume" aria-labelledby="resume-title" tabindex="-1" hidden>
+      <div class="titlebar">
+        <div class="lights"><button type="button" class="light light--close" data-close aria-label="Close Résumé"></button><span class="light light--min" aria-hidden="true"></span><span class="light light--zoom" aria-hidden="true"></span></div>
+        <span class="window-title">Résumé</span>
+      </div>
+      <article class="doc resume">
+        <header class="resume-head">
+          <div>
+            <h2 id="resume-title">Doğukaan Kılıçarslan</h2>
+            <p class="doc-sub">Senior iOS and macOS engineer · Berlin</p>
+          </div>
+          <div class="actions">
+            <a class="btn btn--primary" href="https://www.linkedin.com/in/dogukaan-kilicarslan">LinkedIn</a>
+            <a class="btn" href="mailto:dogukaankilicarslan@gmail.com">Email</a>
+          </div>
+        </header>
+        <p class="doc-lede">Five years of iOS at scale, from a seller app that doubled its users to a fintech app with about a million daily users. Now I also build and ship my own apps for Mac and iPhone.</p>
+
+        <h3>Experience</h3>
+        <ol class="jobs">
+          <li class="job">
+            <p class="job-when">2023 – now</p>
+            <div>
+              <h4>Independent <span>Lead iOS engineer on a freelance product, and my own apps</span></h4>
+              <ul>
+                <li>Set up a SwiftUI and TCA architecture for a team of three: onboarding <b>80% faster</b>, about <b>99.8% crash-free</b>.</li>
+                <li>Built and shipped <a href="#zerre" data-open="zerre">Zerre</a> and <a href="#menuutils" data-open="menuutils">MenuUtils</a> for the Mac, signed and notarized, and <a href="#glean" data-open="glean">Glean</a> on the App Store.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="job">
+            <p class="job-when">2023 – 2026</p>
+            <div>
+              <h4>MigrosOne <span>Senior iOS engineer, MoneyFinance · iOS engineer, Migros Sanal Market</span></h4>
+              <ul>
+                <li>Kept daily crashes under <b>0.1%</b> for about <b>a million daily users</b>, with a 4.8 App Store rating.</li>
+                <li>Moved a <b>1.4M-line</b> codebase from CocoaPods to Swift Package Manager in six weeks: clean builds <b>40% faster</b>.</li>
+                <li>Split checkout into 10 MVVM modules so three developers could work in parallel: PR cycle time <b>down 30%</b>. Added A/B testing to payments.</li>
+                <li>Built the MoneyPay SDK pipeline: a DI framework across 31 service modules, 6+ XCFrameworks shipped as one Swift package, and a Kotlin Multiplatform shared layer.</li>
+                <li>Two engineers, 7 feature modules, about 80 screens. Xcode Cloud and Bitrise took test builds from a day or two to <b>two hours</b>.</li>
+              </ul>
+            </div>
+          </li>
+          <li class="job">
+            <p class="job-when">2021 – 2023</p>
+            <div>
+              <h4>Hepsiburada <span>iOS engineer, seller app</span></h4>
+              <ul>
+                <li>Shipped 20+ features in a year as active users <b>doubled</b> and the rating went from <b>2.3 to 4.7</b>.</li>
+                <li>Rebuilt legacy screens in VIPER: crash-free sessions from 98.5% to <b>99.7%</b>.</li>
+                <li>Found two critical memory leaks with Instruments and <b>halved</b> the app's memory use.</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+
+        <h3>Before iOS</h3>
+        <ol class="jobs jobs--small">
+          <li class="job"><p class="job-when">2020 – 2021</p><div><h4>DO's Music <span>Founder</span></h4><p>Designed, patented and sold a guitar arm-protection band. Ran the shop, the website and the books.</p></div></li>
+          <li class="job"><p class="job-when">2016 – 2018</p><div><h4>Aircraft maintenance <span>Zorlu Holding, Atılım University</span></h4><p>Hangar internships: routine maintenance and inspections, and taking apart a decommissioned Bombardier.</p></div></li>
+          <li class="job"><p class="job-when">2011 – 2017</p><div><h4>Translator <span>Freelance</span></h4><p>Text and audio, between languages.</p></div></li>
+        </ol>
+
+        <h3>Education</h3>
+        <ol class="jobs jobs--small">
+          <li class="job"><p class="job-when">2025 – now</p><div><h4>Boğaziçi University <span>M.S. Software Engineering, in progress</span></h4></div></li>
+          <li class="job"><p class="job-when">2018</p><div><h4>Atılım University <span>B.S. Avionics Engineering</span></h4></div></li>
+          <li class="job"><p class="job-when">2021 – 2022</p><div><h4>Patika.dev bootcamps <span>Hepsiburada iOS, Property Finder Go backend, and AWS and DevOps with Airties as an assistant</span></h4></div></li>
+        </ol>
+
+        <h3>What I work with</h3>
+        <dl class="caps">
+          <dt>Apple platforms</dt>
+          <dd><ul class="chips"><li>Swift 6</li><li>SwiftUI</li><li>UIKit</li><li>AppKit</li><li>Swift concurrency</li><li>SwiftData</li><li>Core Data</li><li>StoreKit 2</li><li>Foundation Models</li><li>AVFoundation</li><li>Core Audio</li></ul></dd>
+          <dt>Architecture</dt>
+          <dd><ul class="chips"><li>Modularisation</li><li>MVVM</li><li>TCA</li><li>VIPER</li><li>Dependency injection</li><li>SDKs and XCFrameworks</li><li>Kotlin Multiplatform</li></ul></dd>
+          <dt>Tooling</dt>
+          <dd><ul class="chips"><li>Swift Package Manager</li><li>Tuist</li><li>Xcode Cloud</li><li>Bitrise</li><li>Instruments</li><li>Swift Testing</li><li>XCTest</li><li>Bash</li><li>Python</li><li>AI coding agents</li></ul></dd>
+          <dt>Languages</dt>
+          <dd><ul class="chips"><li>Turkish, native</li><li>English, fluent</li><li>German, learning</li></ul></dd>
+        </dl>
+      </article>
+    </section>
+
+    <section class="window window--info window--doc window--community" id="community" data-window="community" aria-labelledby="community-title" tabindex="-1" hidden>
+      <div class="titlebar">
+        <div class="lights"><button type="button" class="light light--close" data-close aria-label="Close Talks and community"></button><span class="light light--min" aria-hidden="true"></span><span class="light light--zoom" aria-hidden="true"></span></div>
+        <span class="window-title">Talks and community</span>
+      </div>
+      <div class="doc community">
+        <div class="photos">
+          <figure><img src="/assets/photos/codewave-2025.jpg" alt="Doğukaan on stage with a microphone at KTÜ CODEWAVE 2025 in Trabzon" width="800" height="533" loading="lazy"><figcaption>CODEWAVE 2025, Trabzon</figcaption></figure>
+          <figure><img src="/assets/photos/presenting.jpg" alt="Doğukaan presenting in front of a projector screen" width="1400" height="350" loading="lazy" class="photo--wide"><figcaption>Showing what I'm building</figcaption></figure>
+        </div>
+        <h2 id="community-title" class="visually-hidden">Talks and community</h2>
+
+        <h3>SwiftBuddies</h3>
+        <div class="sb">
+          <img src="/assets/photos/swiftbuddies-berlin.jpg" alt="SwiftBuddies Berlin, a tech community meetup hosted by The Base" width="480" height="270" loading="lazy">
+          <div>
+            <p>I started SwiftBuddies in Istanbul as a meetup where iOS developers could learn from each other, and built <a href="https://github.com/SwiftBuddiesTR/BuddiesIOS">Buddies</a>, its open-source community app. In August 2026 it came to Berlin: the first SwiftBuddies Berlin meetup was at The Base.</p>
+            <div class="actions">
+              <a class="btn" href="https://t.me/swiftbuddies">Join on Telegram</a>
+              <a class="btn" href="https://github.com/SwiftBuddiesTR">On GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <h3>On stage</h3>
+        <ul class="rows">
+          <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7393950603812614144/"><span class="row-when">Nov 2025</span><span><strong>CODEWAVE 2025</strong><small>Karadeniz Technical University's computer engineering club, Trabzon</small></span></a></li>
+          <li><a href="https://www.linkedin.com/in/dogukaan-kilicarslan/recent-activity/all/"><span class="row-when">Earlier</span><span><strong>42 Türkiye Connect</strong><small>A conversation at 42 Türkiye's community event</small></span></a></li>
+          <li><a href="https://www.linkedin.com/in/dogukaan-kilicarslan/recent-activity/all/"><span class="row-when">Aug 2026</span><span><strong>SwiftBuddies Berlin #1: The Next Chapter</strong><small>Organiser, at The Base in Berlin</small></span></a></li>
+        </ul>
+
+        <h3>Lately on LinkedIn</h3>
+        <ul class="rows">
+          <li><a href="https://www.linkedin.com/in/dogukaan-kilicarslan/recent-activity/all/"><span class="row-when">Oct 2026</span><span><strong>MenuUtils is out</strong><small>Something I'd been building on the side for a while</small></span></a></li>
+          <li><a href="https://www.linkedin.com/in/dogukaan-kilicarslan/recent-activity/all/"><span class="row-when">2026</span><span><strong>Meet Zerre</strong><small>A little creature for my Mac that wanders around the desktop and naps on the Dock</small></span></a></li>
+          <li><a href="https://www.linkedin.com/in/dogukaan-kilicarslan/recent-activity/all/"><span class="row-when">Aug 2026</span><span><strong>The first SwiftBuddies Berlin meetup</strong><small>It genuinely felt like a great start</small></span></a></li>
+          <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7393950603812614144/"><span class="row-when">Nov 2025</span><span><strong>On stage at CODEWAVE 2025</strong><small>Talking to students in Trabzon</small></span></a></li>
+        </ul>
+
+        <h3>Elsewhere</h3>
+        <ul class="chips chips--links">
+          <li><a href="https://www.linkedin.com/in/dogukaan-kilicarslan">LinkedIn</a></li>
+          <li><a href="https://github.com/darkbringer1">GitHub</a></li>
+          <li><a href="https://x.com/dogukaank_">X</a></li>
+          <li><a href="https://medium.com/@dogukaan.k">Medium</a></li>
+          <li><a href="mailto:dogukaankilicarslan@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Desktop icons -->
+    <nav class="icons icons--me" aria-label="About me on the desktop">
+      <a class="icon" href="#story" data-open="story"><img src="/assets/notes.svg" alt="" width="60" height="60"><span>How I got here</span></a>
+      <a class="icon" href="#resume" data-open="resume"><img src="/assets/resume.svg" alt="" width="60" height="60"><span>Résumé</span></a>
+      <a class="icon" href="#community" data-open="community"><img src="/assets/community.svg" alt="" width="60" height="60"><span>Community</span></a>
+    </nav>
     <nav class="icons" aria-label="Apps on the desktop">
       <a class="icon" href="https://zerre.dogukaan.dev/" data-open="zerre"><img class="pixel tile" src="/assets/zerre.svg" alt="" width="60" height="60"><span>Zerre</span></a>
       <a class="icon" href="https://menuutils.dogukaan.dev/" data-open="menuutils"><img src="/assets/menuutils.svg" alt="" width="60" height="60"><span>MenuUtils</span></a>
@@ -227,6 +398,14 @@
     <a class="dock-item" href="https://menuutils.dogukaan.dev/" data-open="menuutils" aria-label="MenuUtils"><img src="/assets/menuutils.svg" alt=""><span class="dock-label" aria-hidden="true">MenuUtils</span></a>
     <a class="dock-item" href="https://glean.dogukaan.dev/" data-open="glean" aria-label="Glean"><img src="/assets/glean.svg" alt=""><span class="dock-label" aria-hidden="true">Glean</span></a>
     <span class="dock-sep" aria-hidden="true"></span>
+    <a class="dock-item dock-item--me" href="#story" data-open="story" aria-label="How I got here"><img src="/assets/notes.svg" alt=""><span class="dock-label" aria-hidden="true">How I got here</span></a>
+    <a class="dock-item dock-item--me" href="#resume" data-open="resume" aria-label="Résumé"><img src="/assets/resume.svg" alt=""><span class="dock-label" aria-hidden="true">Résumé</span></a>
+    <a class="dock-item dock-item--me" href="#community" data-open="community" aria-label="Talks and community"><img src="/assets/community.svg" alt=""><span class="dock-label" aria-hidden="true">Talks and community</span></a>
+    <span class="dock-sep" aria-hidden="true"></span>
+    <a class="dock-item dock-item--linkedin" href="https://www.linkedin.com/in/dogukaan-kilicarslan" aria-label="LinkedIn">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M0 1.15C0 .52.53 0 1.18 0h13.64C15.47 0 16 .52 16 1.15v13.7c0 .63-.53 1.15-1.18 1.15H1.18C.53 16 0 15.48 0 14.85zm4.94 12.24V6.17H2.54v7.22zM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.02-.71-.52-1.25-1.34-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25zm4.9 8.21V9.36c0-.22.02-.43.08-.59.18-.43.57-.88 1.23-.88.87 0 1.21.66 1.21 1.63v3.87h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.28 0-1.84.7-2.16 1.2v.03h-.02l.02-.03V6.17h-2.4c.03.68 0 7.22 0 7.22z"/></svg>
+      <span class="dock-label" aria-hidden="true">LinkedIn</span>
+    </a>
     <a class="dock-item dock-item--github" href="https://github.com/darkbringer1" aria-label="GitHub">
       <svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
       <span class="dock-label" aria-hidden="true">GitHub</span>
