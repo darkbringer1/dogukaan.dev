@@ -314,6 +314,15 @@ img.tile { background: #e6f3e4; padding: 6px; }
 .rows a::after { content: "\2197"; color: var(--ink-2); }
 .rows a:hover { background: var(--hover); }
 .row-when { color: var(--ink-2); font-size: 13px; white-space: nowrap; }
+.rows em { font-style: normal; color: var(--ink-2); font-size: 13px; white-space: nowrap; }
+.rows--meetups a { grid-template-columns: 64px 1fr auto auto; padding-block: 7px; }
+.rows--meetups .year {
+  margin: 14px 12px 2px; font-family: var(--pixel); font-size: 11px; letter-spacing: .04em; color: var(--ink-2);
+}
+.rows--meetups .year:first-child { margin-top: 4px; }
+.stats { display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0; padding: 0; list-style: none; color: var(--ink-2); font-size: 13.5px; }
+.stats strong { display: block; color: var(--ink); font-size: 24px; font-weight: 650; letter-spacing: -.02em; line-height: 1.1; }
+.community .sb + .chips--links { margin-top: 16px; }
 .rows strong { display: block; font-size: 15px; font-weight: 600; }
 .rows small { display: block; color: var(--ink-2); font-size: 13.5px; line-height: 1.4; }
 
@@ -440,6 +449,9 @@ img.tile { background: #e6f3e4; padding: 6px; }
   .sb img { max-width: 320px; }
   .rows a { grid-template-columns: 1fr auto; }
   .row-when { grid-column: 1 / -1; }
+  .rows--meetups a { grid-template-columns: 52px 1fr auto; gap: 10px; }
+  .rows--meetups a::after { display: none; }
+  .rows--meetups .row-when { grid-column: auto; }
   .about-more .btn { flex: 1 1 auto; }
   .dock-item--me { display: none; }
   .dock-sep + .dock-sep { display: none; }
