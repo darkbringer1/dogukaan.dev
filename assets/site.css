@@ -251,10 +251,12 @@ img.tile { background: #e6f3e4; padding: 6px; }
 .about-more img { width: 22px; height: 22px; border-radius: 5px; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-.window--notes { width: min(560px, calc(100vw - 48px)); }
-.window--resume { width: min(700px, calc(100vw - 48px)); }
-.window--community { width: min(720px, calc(100vw - 48px)); }
-.window--doc .doc { max-height: min(740px, calc(100vh - 200px)); overflow-y: auto; overscroll-behavior: contain; }
+/* Sized to their content: the note is a narrow page that fits without scrolling,
+   the résumé and community folder are wide so long rows and photos have room */
+.window--notes { width: min(600px, calc(100vw - 48px)); }
+.window--resume { width: min(880px, calc(100vw - 48px)); }
+.window--community { width: min(900px, calc(100vw - 48px)); }
+.window--doc .doc { max-height: max(420px, calc(100vh - 176px)); overflow-y: auto; overscroll-behavior: contain; }
 .doc h3 {
   margin: 30px 0 4px; padding-top: 18px; border-top: 1px solid var(--win-line);
   font-family: var(--pixel); font-size: 12px; font-weight: 400; letter-spacing: .04em; text-transform: uppercase; color: var(--link);
@@ -296,7 +298,7 @@ img.tile { background: #e6f3e4; padding: 6px; }
 .community > :not(.photos) { margin-left: 32px; margin-right: 32px; }
 .photos { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
 .photos figure { position: relative; margin: 0; }
-.photos img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.photos img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
 .photos img.photo--wide { object-position: 24% 40%; }
 .photos figcaption {
   position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 14px 10px;
@@ -304,7 +306,7 @@ img.tile { background: #e6f3e4; padding: 6px; }
   background: linear-gradient(transparent, rgba(0, 0, 0, .55));
 }
 .community h3:first-of-type { margin-top: 24px; border-top: 0; padding-top: 0; }
-.sb { display: grid; grid-template-columns: 220px 1fr; gap: 20px; align-items: start; margin-top: 12px; }
+.sb { display: grid; grid-template-columns: 280px 1fr; gap: 20px; align-items: start; margin-top: 12px; }
 .sb img { display: block; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 0 0 1px var(--win-line); }
 .sb p { margin: 0 0 14px; line-height: 1.5; font-size: 15px; }
 .rows { margin: 8px -12px 0; padding: 0; list-style: none; }
