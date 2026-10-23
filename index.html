@@ -52,6 +52,37 @@
       </div>
     </nav>
     <div class="status">
+      <div class="mu-modules" id="mu-modules">
+        <div class="menu menu--module">
+          <button class="menu-title status-item" type="button" aria-expanded="false" aria-controls="mu-system" aria-label="System Monitor, a MenuUtils module"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="8" height="8" rx="1.5"/><rect x="6.5" y="6.5" width="3" height="3" rx=".5" fill="currentColor" stroke="none"/><path d="M6 1.8v2.2M10 1.8v2.2M6 12v2.2M10 12v2.2M1.8 6h2.2M1.8 10h2.2M12 6h2.2M12 10h2.2"/></svg></button>
+          <div class="menu-panel menu-panel--module" id="mu-system" hidden>
+            <img src="/assets/shots/mu-system.webp" alt="The System Monitor panel: CPU and GPU history, memory pressure with a Release RAM button, and disk space" width="340" height="508" loading="lazy">
+            <button type="button" class="mu-chip" data-open="menuutils">System Monitor is part of MenuUtils</button>
+          </div>
+        </div>
+        <div class="menu menu--module">
+          <button class="menu-title status-item" type="button" aria-expanded="false" aria-controls="mu-network" aria-label="Network Monitor, a MenuUtils module"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6.2"/><path d="M1.8 8h12.4M8 1.8c-2.2 2.4-2.2 10 0 12.4M8 1.8c2.2 2.4 2.2 10 0 12.4"/></svg></button>
+          <div class="menu-panel menu-panel--module" id="mu-network" hidden>
+            <img src="/assets/shots/mu-network.webp" alt="The Network Monitor panel: download and upload speed, speed history and the top network consumers" width="340" height="413" loading="lazy">
+            <button type="button" class="mu-chip" data-open="menuutils">Network Monitor is part of MenuUtils</button>
+          </div>
+        </div>
+        <div class="menu menu--module">
+          <button class="menu-title status-item" type="button" aria-expanded="false" aria-controls="mu-transcription" aria-label="Transcription, a MenuUtils module"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="1.8" width="4" height="7.4" rx="2"/><path d="M3.8 7.6a4.2 4.2 0 0 0 8.4 0M8 11.8v2.4"/><path d="M1.6 6.4v2.4M14.4 6.4v2.4" /></svg></button>
+          <div class="menu-panel menu-panel--module" id="mu-transcription" hidden>
+            <img src="/assets/shots/mu-transcription.png" alt="The Transcription panel in Call mode, with microphone and system audio ready and a Start Transcription button" width="340" height="313" loading="lazy">
+            <button type="button" class="mu-chip" data-open="menuutils">Transcription is part of MenuUtils</button>
+          </div>
+        </div>
+        <div class="menu menu--module">
+          <button class="menu-title status-item" type="button" aria-expanded="false" aria-controls="mu-xcode" aria-label="Xcode Cleaner, a MenuUtils module"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6.2"/><path d="M5.2 10.8l3.6-3.6"/><path d="M7.4 5.6l1.6-1.2 2.6 2.6-1.2 1.6z" fill="currentColor"/></svg></button>
+          <div class="menu-panel menu-panel--module" id="mu-xcode" hidden>
+            <img src="/assets/shots/mu-xcode.png" alt="The Xcode Cleaner panel showing reclaimable space and a Clean Now button" width="340" height="211" loading="lazy">
+            <button type="button" class="mu-chip" data-open="menuutils">Xcode Cleaner is part of MenuUtils</button>
+          </div>
+        </div>
+      </div>
+      <button class="status-item hider" type="button" aria-expanded="true" aria-controls="mu-modules" aria-label="Hide menu bar icons" title="Menu Bar Hider, a MenuUtils module"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5L10.5 8 6 12.5"/></svg></button>
       <div class="menu menu--right">
         <button class="menu-title status-item" type="button" aria-expanded="false" aria-controls="menu-mu" aria-label="MenuUtils">
           <svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.5" fill="currentColor"/><rect x="9" y="1.5" width="5.5" height="5.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="1.5" y="9" width="5.5" height="5.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="9" y="9" width="5.5" height="5.5" rx="2.75" fill="currentColor"/></svg>
